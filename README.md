@@ -1,28 +1,36 @@
 ## RxJava
-RxJava之扔物线[给Android开发者的RxJava详解](http://gank.io/post/560e15be2dca930e00da1083)文章中的例子
-
-###Build
-
-To build:
->$ git clone https://github.com/androidmalin/RengwuxianRxjava.git<br/>
->$ cd RengwuxianRxjava/<br/>
->$ gradle clean --stacktrace(./gradlew clean --stacktrace )<br/>
+扔物线[给Android开发者的RxJava详解](http://gank.io/post/560e15be2dca930e00da1083)文章中的例子
 
 
-###Bugs and Feedback
-
-For bugs, questions and discussions please use the [Github Issues](https://github.com/androidmalin/RengwuxianRxjava/issues).
 
 
 ### 项目依赖
 
 项目名称 | 项目信息
-------- | -------
-[android.support.*](https://developer.android.com/tools/support-library/index.html) | Android Support Library
-[RxJava](https://github.com/ReactiveX/RxJava) | 一个在 Java VM 上使用可观测的序列来组成异步的、基于事件的程序的库
-[RxAndroid](https://github.com/ReactiveX/RxAndroid) | RxAndroid 是 RxJava 的一个针对 Android 平台的扩展
-[RxBinding](https://github.com/JakeWharton/RxBinding) | JakeWharton Android函数式相应编程(FRP)框架
-[logger](https://github.com/orhanobut/logger) | 一个简洁,优雅,功能强大的Android日志输出工具
+学习下RxJava操作符.
+
+一、Obervable的创建
+>1.create 2.from 3.just
+常见操作
+>1.repeat重复
+>2.range 从一个指定的数字x开发发射n个数字 range()函数用两个数字作为参数：第一个是起始点，第二个是我们想发射数字的个数。
+>interval轮询 第一个参数延时,第二个参数间隔,第三个参数单位
+>timer 延迟执行  (官方已废弃轮训方法,推荐用interval) 第一个参数为延迟执行的时间,第二个为时间单位
+二、过滤
+>1、filter
+>2、take   take()函数用整数N来作为一个参数，从原始的序列中发射前N个元素，然后完成.takeLast相反取后面的对应N个元素
+>3、Distinct 去除重复
+>4、DistinctUntilsChanged //它能轻易的忽略掉所有的重复并且只发射出新的值。
+>5、First and last 只发射第一个元素或者最后一个元素。
+>6、skip和skipLast 跳过前面和后面N个元素 与take 对应
+三、变形
+>map 1对1 的变形
+>flatMap 1->Observable 的变形
+>ConcatMap 与flatMap对应 维持元素顺序  flatMap是合并多次操作的结果 ConcatMap是顺序依次连接每次操作的结果.
+>SwitchMap 和flatMap()很像，当源Observable发射一个新的数据项时，如果旧数据项订阅还未完成，就取消旧订阅数据和停止监视那个数据项产生的Observable,开始监视新的数据项.
+>Scan 类似于递归
+
+>lift compose
 
 
 ### 参考的文章
@@ -36,34 +44,5 @@ For bugs, questions and discussions please use the [Github Issues](https://githu
 [shwenzhang](https://github.com/shwenzhang)|[Android内存优化杂谈](http://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&mid=400656149&idx=1&sn=122b4f4965fafebf78ec0b4fce2ef62a&3rd=MzA3MDU4NTYzMw==&scene=6#rd)| 内存优化
 
 
-###About me
-
-[我的CSDN博客](http://blog.csdn.net/androidmalin):[http://blog.csdn.net/androidmalin](http://blog.csdn.net/androidmalin)<br/>
-[我的微博](http://weibo.com/androidmalin):[http://weibo.com/androidmalin](http://weibo.com/androidmalin)<br/>
 
 
-###License
-<pre>
-The MIT License (MIT)
-
-Copyright (c) 2015 malin
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-</pre>

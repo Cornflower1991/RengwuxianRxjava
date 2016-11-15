@@ -168,6 +168,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
         /**
          * 可以看到，这里传入了一个 OnSubscribe 对象作为参数。
          * OnSubscribe 会被存储在返回的 Observable 对象中，它的作用相当于一个计划表，
@@ -250,6 +253,7 @@ public class MainActivity extends AppCompatActivity {
 
         //3:订阅:被观察者被观察者订阅
         observable.subscribe(observer);
+
     }
 
 
@@ -294,7 +298,7 @@ public class MainActivity extends AppCompatActivity {
             public void onNext(Object o) {
                 String str = (String) o;
                 Logger.d("观察者-observer:onNext():" + str);
-               // getException();//故意让程序出现异常,用于测试onError()方法的执行....
+                // getException();//故意让程序出现异常,用于测试onError()方法的执行....
             }
         };
 
@@ -591,7 +595,7 @@ public class MainActivity extends AppCompatActivity {
      * {@link #method8()}
      */
     private void method9() {
-       //just(T...): 将传入的参数依次发送出来,实现遍历的目的
+        //just(T...): 将传入的参数依次发送出来,实现遍历的目的
         Observable.from(DataFactory.getData())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -782,7 +786,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-     //---------------------------------------10: RxBinding的引入-------------------------------------------------------------
+    //---------------------------------------10: RxBinding的引入-------------------------------------------------------------
 
 
     /**
